@@ -43,7 +43,36 @@ namespace MyCoreMVC.Controllers
             }
             return View(obj);
 
+        }
 
+
+        // GET - EDIT
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null || id == 0) return NotFound();
+
+            var category = await _context.Category.FindAsync(id);
+            if (category == null) return NotFound();
+
+            return View(category);
+
+        }
+
+
+        // POST - EDIT
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(Category category)
+        {
+
+            if (ModelState.IsValid)
+            {
+                 _context.Category.Update(category);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+
+            return View(category);
 
         }
     }

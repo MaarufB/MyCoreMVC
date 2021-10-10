@@ -435,3 +435,5 @@ D:\Dotnet\MyCoreMVC\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
 D:\Dotnet\MyCoreMVC\obj\Debug\net5.0\Razor\Views\Category\Create.cshtml.g.cs
 D:\Dotnet\MyCoreMVC\obj\Debug\net5.0\Razor\Views\ApplicationType\Create.cshtml.g.cs
 D:\Dotnet\MyCoreMVC\obj\Debug\net5.0\Razor\Views\ApplicationType\Index.cshtml.g.cs
+D:\Dotnet\MyCoreMVC\obj\Debug\net5.0\Razor\Views\Category\Edit.cshtml.g.cs
+D:\Dotnet\MyCoreMVC\obj\Debug\net5.0\Razor\Views\Category\Delete.cshtml.g.cs
