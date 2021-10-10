@@ -75,5 +75,32 @@ namespace MyCoreMVC.Controllers
             return View(category);
 
         }
+
+        // GET - DELETE
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null || id == 0) return NotFound();
+
+            var category = await _context.Category.FindAsync(id);
+            if (category == null) return NotFound();
+
+            return View(category);
+
+        }
+
+
+        // POST - DELETE  
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeletePost(int? id)
+        {
+            var category = await _context.Category.FindAsync(id);
+            if (category == null) return NotFound();
+
+            _context.Category.Remove(category);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+        }
     }
 }
