@@ -23,5 +23,28 @@ namespace MyCoreMVC.Controllers
             var cat = await _context.Category.ToListAsync();
             return View(cat);
         }
+
+        //GET - CREATE
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST - INSERT
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Category obj)
+        {
+            if (ModelState.IsValid)
+            {
+                await _context.Category.AddAsync(obj);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+
+
+
+        }
     }
 }
