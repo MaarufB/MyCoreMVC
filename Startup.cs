@@ -33,6 +33,10 @@ namespace MyCoreMVC
             
                   
             services.AddControllersWithViews();
+            //This is for testing
+            services.AddRazorPages();
+
+         
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,9 +61,11 @@ namespace MyCoreMVC
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
+                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Category}/{action=Index}/{id?}");
+                // endpoints.MapControllers();
+                endpoints.MapRazorPages();
             });
         }
     }

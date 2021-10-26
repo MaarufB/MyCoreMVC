@@ -6,47 +6,78 @@
     <title>@ViewData["Title"] - MyCoreMVC</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/fontawesome/css/all.css" />
+    <link rel="stylesheet" href="~/css/test_style.css" />
+
+    <script src="~/js/my_modal.js"></script>
 </head>
 <body>
+
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MyCoreMVC</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark m-0">
+            <div class="container w-100">
+                <a class="navbar-brand ml-0 mr-4" 
+                    id="home" 
+                    asp-controller="Home" 
+                    asp-action="Index">MyCoreMVC</a>
+
+                <button class="navbar-toggler" 
+                        type="button" 
+                        data-toggle="collapse" 
+                        data-target=".navbar-collapse" 
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false" 
+                        aria-label="Toggle navigation">
+
                     <span class="navbar-toggler-icon"></span>
+
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between m-1">
                     <ul class="navbar-nav flex-grow-1">
-                        
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-light" 
+                                asp-area="" 
+                                asp-controller="Home" 
+                                asp-action="Index">Home</a>
                         </li>
-                        
+            
                         <li class="nav-item">
-                            <!--The asp-action attribute is a controller name-->
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Index">Category</a>
+                            <a class="nav-link text-light" 
+                                asp-area="" 
+                                asp-controller="Modal" 
+                                asp-action="Index">Modal</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ApplicationType" asp-action="Index">Application Type</a>
-                        </li>
-                    
                     </ul>
+
+                    <div class="dropdown bg-dark">
+                        <a class="dropdown-toggle text-light" 
+                            id="register-dropdown" 
+                            data-toggle="dropdown" 
+                            aria-haspopup="true" 
+                            aria-expanded="false">Register</a>
+
+                        <div class="dropdown-menu mt-3" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Register</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" 
+                                href="@Url.Action("Index", "Category")">Log-out</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="mt-2 pb-3">
             @RenderBody()
         </main>
     </div>
-
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2021 - MyCoreMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
+        <p class="container">@DateTime.Now.ToShortDateString()</p>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,8 +1,45 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var my_title = "My Projects";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center table-container">
+    <h1>@my_title</h1>
+    <div class="container">
+        <table class="table table-bordered table-sm">
+            <thead class="thead-success">
+                <tr>
+                    <th scope="col">Project Title</th>
+                    <th scope="col">Link</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!-- It will directly navigate you to the category -->
+                <tr>
+                    <td>Category</td>
+                    <td>
+                        <a asp-controller="Category" asp-action="Index">Link</a>
+                    </td>
+                </tr>
+
+                <!-- It will directly navigate you to the Application Type page -->
+                <tr>
+                    <td>ApplicationType</td>
+                    <td>
+                        <a asp-controller="ApplicationType" asp-action="Index">Link</a>
+                    </td>
+                </tr>
+
+                <!-- It will directly navigate you to the Todo List Page-->
+                <tr>
+                    <td>Todo List</td>
+                    <td>
+                        <a asp-controller="Todo" asp-action="Index">Link</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 </div>

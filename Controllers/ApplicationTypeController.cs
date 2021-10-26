@@ -11,6 +11,7 @@ namespace MyCoreMVC.Controllers
 {
     public class ApplicationTypeController : Controller
     {
+
         private readonly ApplicationDbContext _context;
         public ApplicationTypeController(ApplicationDbContext context)
         {
@@ -19,28 +20,86 @@ namespace MyCoreMVC.Controllers
 
         public async Task<ActionResult<IEnumerable<ApplicationType>>> Index()
         {
-            var application_type = await _context.ApplicationType.ToListAsync();
-             
-            return View(application_type);
+            var app_type = await _context.ApplicationType.ToListAsync();
+            return View(app_type);
         }
 
+        //GET - CREATE
         public IActionResult Create()
         {
-
             return View();
-
         }
-        //POST - CREATE 
+
+        // POST - INSERT
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(ApplicationType application_type)
+        public async Task<IActionResult> Create(ApplicationType app_obj)
         {
-            await _context.ApplicationType.AddAsync(application_type);
+            if (ModelState.IsValid)
+            {
+                await _context.ApplicationType.AddAsync(app_obj);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(app_obj);
+
+        }
+
+
+        // GET - EDIT
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null || id == 0) return NotFound();
+
+            var app_type_obj = await _context.ApplicationType.FindAsync(id);
+            if (app_type_obj == null) return NotFound();
+
+            return View(app_type_obj);
+
+        }
+
+        // POST - EDIT
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(ApplicationType app_type_obj)
+        {
+
+            if (ModelState.IsValid)
+            {
+                _context.ApplicationType.Update(app_type_obj);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+
+            return View(app_type_obj);
+
+        }
+
+        // GET - DELETE
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null || id == 0) return NotFound();
+
+            var app_type_obj = await _context.ApplicationType.FindAsync(id);
+            if (app_type_obj== null) return NotFound();
+
+            return View(app_type_obj);
+
+        }
+
+
+        // POST - DELETE  
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeletePost(int? id)
+        {
+            var app_type_obj = await _context.ApplicationType.FindAsync(id);
+            if (app_type_obj == null) return NotFound();
+
+            _context.ApplicationType.Remove(app_type_obj);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
         }
-
-        
     }
 }

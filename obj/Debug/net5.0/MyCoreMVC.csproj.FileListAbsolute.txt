@@ -437,3 +437,8 @@ D:\Dotnet\MyCoreMVC\obj\Debug\net5.0\Razor\Views\ApplicationType\Create.cshtml.g
 D:\Dotnet\MyCoreMVC\obj\Debug\net5.0\Razor\Views\ApplicationType\Index.cshtml.g.cs
 D:\Dotnet\MyCoreMVC\obj\Debug\net5.0\Razor\Views\Category\Edit.cshtml.g.cs
 D:\Dotnet\MyCoreMVC\obj\Debug\net5.0\Razor\Views\Category\Delete.cshtml.g.cs
+D:\Dotnet\MyCoreMVC\obj\Debug\net5.0\Razor\Views\ApplicationType\Delete.cshtml.g.cs
+D:\Dotnet\MyCoreMVC\obj\Debug\net5.0\Razor\Views\ApplicationType\Edit.cshtml.g.cs
+D:\Dotnet\MyCoreMVC\obj\Debug\net5.0\Razor\Views\Modal\Index.cshtml.g.cs
+D:\Dotnet\MyCoreMVC\obj\Debug\net5.0\Razor\Views\Modal\_ModalPartial.cshtml.g.cs
+D:\Dotnet\MyCoreMVC\obj\Debug\net5.0\Razor\Views\Todo\Index.cshtml.g.cs

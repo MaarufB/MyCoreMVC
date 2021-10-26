@@ -17,7 +17,7 @@ namespace MyCoreMVC.Controllers
         {
             _context = context;
         }
-
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<Category>>> Index()
         {
             var cat = await _context.Category.ToListAsync();
@@ -44,7 +44,6 @@ namespace MyCoreMVC.Controllers
             return View(obj);
 
         }
-
 
         // GET - EDIT
         public async Task<IActionResult> Edit(int? id)

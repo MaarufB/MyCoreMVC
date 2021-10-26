@@ -1,0 +1,27 @@
+﻿@model Category
+
+<div class="modal fade" id="CallModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="CallModalID">CallModal</h4>
+                <button type="button" class="close" data-delay="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <form action="Create">
+                    <div class="form-group">
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal"  >Hey</button>
+            </div>
+        </div>
+    </div>
+
+</div>
