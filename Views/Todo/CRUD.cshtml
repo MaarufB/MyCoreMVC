@@ -1,0 +1,34 @@
+﻿@model MyCoreMVC.Models.TodoModel
+
+<form method="post" asp-action="Create">
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <h2 class="text-info text-center" pl-3>Add Task</h2>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="TaskName">Task Name</label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="TaskName" class="form-control" />
+                        <span asp-validation-for="TaskName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="TaskStatus"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="TaskStatus" class="form-control" />
+                        <span asp-validation-for="TaskStatus" class="text-danger"></span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>

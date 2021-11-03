@@ -203,6 +203,7 @@ rcf/
 # bin
 bin/*
 .vscode/*
+Resources/*
 
 
 # Windows Store app package directories and files

@@ -1,0 +1,7 @@
+For Navigation Bar
+    *Make a Project Menu and Inside of that is DotNet Projects and Computer Vision Python Project
+
+
+For Todo List Portion
+    *Stripe the task if it is finished
+    *Make a Search box on top

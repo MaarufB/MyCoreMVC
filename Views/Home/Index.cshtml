@@ -1,45 +1,73 @@
-﻿@{
+﻿@using System.Collections.Generic;
+@{
     ViewData["Title"] = "Home Page";
-    var my_title = "My Projects";
+    var listApp = new List<string>();
+
+    listApp.Add("Category");
+    listApp.Add("Application Type");
+    listApp.Add("Todo List");
+    
+
 }
-
-<div class="text-center table-container">
-    <h1>@my_title</h1>
-    <div class="container">
-        <table class="table table-bordered table-sm">
-            <thead class="thead-success">
-                <tr>
-                    <th scope="col">Project Title</th>
-                    <th scope="col">Link</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <!-- It will directly navigate you to the category -->
-                <tr>
-                    <td>Category</td>
-                    <td>
-                        <a asp-controller="Category" asp-action="Index">Link</a>
-                    </td>
-                </tr>
-
-                <!-- It will directly navigate you to the Application Type page -->
-                <tr>
-                    <td>ApplicationType</td>
-                    <td>
-                        <a asp-controller="ApplicationType" asp-action="Index">Link</a>
-                    </td>
-                </tr>
-
-                <!-- It will directly navigate you to the Todo List Page-->
-                <tr>
-                    <td>Todo List</td>
-                    <td>
-                        <a asp-controller="Todo" asp-action="Index">Link</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+<!--
+@foreach (var item in listApp)
+{
+    <div class="card">
+        <img src="#" alt="Image Cap">
+        <div class="card-body">
+            <h5 class="card-title">@item</h5>
+            <p class="card-text">This is a simple Category Application</p>
+            <a href="" class="btn btn-primary">Open</a>
+        </div>
+    </div>    
+}
+-->
+<div class="card-container">
+    <div class="card">
+        <!--<img src="#" alt="Image Cap">-->
+        <div class="card-body">
+            <h5 class="card-title">Category</h5>
+            <p class="card-text">This is a simple Category Application</p>
+            <a class="btn btn-primary" 
+               asp-controller="Category" 
+               asp-action="Index">Open</a>
+        
+        </div>
     </div>
-
+    <div class="card">
+        <!--<img src="#" alt="Image Cap">-->
+        <div class="card-body">
+            <h5 class="card-title">Application Type</h5>
+            <p class="card-text">This is a simple Application Type</p>
+            <a  class="btn btn-primary"
+                asp-controller="ApplicationType" 
+                asp-action="Index">Open</a>
+        
+        </div>
+    </div>
+    <div class="card">
+        <!--<img src="#" alt="Image Cap">-->
+        <div class="card-body">
+            <h5 class="card-title">Todo List</h5>
+            <p class="card-text">This is a simple Todo List Application</p>
+            <a class="btn btn-primary" 
+               asp-controller="Todo" 
+               asp-action="Index">Open</a>
+        
+        </div>
+    </div>  
 </div>
+
+<style>
+    .card-container{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        display: flex;
+        justify-content: space-between;
+        margin: 1rem;
+    }
+    .card{
+        border-radius: 25px;
+        width: 18rem;
+        margin: 1rem;
+    }
+</style>

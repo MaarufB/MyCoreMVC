@@ -4,6 +4,8 @@
     List<string> myList = new List<string>();
     myList.Add("Ma-aruf");
     myList.Add("Burad");
+
+    var taskStatus = "Incomplete";
 }
 
 <div class="container" style="text-align:center;">
@@ -16,6 +18,7 @@
                     <th>ID</th>
                     <th>Task Name</th>
                     <th>Status</th>
+                    
                 </tr>
             </thead>
             @foreach (var todo in Model)
@@ -32,12 +35,13 @@
     }
     else
     {
-
         <table class="table table-bordered table-striped" style="width:100%">
             <thead>
                 <tr>
-                    <th>Category Name</th>
-                    <th>Display Order</th>
+                    <th>Task Name</th>
+                    <th>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="myModal"><i class="fas fa-plus"></i>&nbsp;Add</button>
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -45,7 +49,6 @@
                 {
                     <tr>
                         <td width="50%">@obj</td>
-                        <td width="30%">@obj</td>
                         <td class="text-center">
                             <div class="w-75 btn-group" role="group">
                                 <a asp-controller="Category" asp-route-Id="@obj" asp-action="Edit" class="btn btn-primary mx-2">
@@ -62,3 +65,49 @@
         </table>
     }
 </div>
+
+<!-- Modal -->
+<div class="modal" tabindex="-1" role="dialog" id="ModalPopup">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body border border-danger">
+                <form method="post" asp-action="Create" class="border border-primary form-container">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <h2 class="text-info form-title" pl-3>Add Task</h2>
+                    <div class="form-field">
+                        <label for="">Task Name</label>
+                        <input type="text" class="input-field">
+                    </div>
+                    <div class="form-field">
+                        <label for="">Task Status</label>
+                        <input type="text" class="input-field">
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $('#myModal').click(function () {
+    $('#ModalPopup').modal('show');
+})
+</script>
+
+
+<style>
+
+</style>
