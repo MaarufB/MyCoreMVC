@@ -5,7 +5,7 @@
     myList.Add("Ma-aruf");
     myList.Add("Burad");
 
-    var taskStatus = "Incomplete";
+    string taskStatus = "Incomplete";   
 }
 
 <div class="container" style="text-align:center;">
@@ -67,29 +67,22 @@
 </div>
 
 <!-- Modal -->
-<div class="modal" tabindex="-1" role="dialog" id="ModalPopup">
+<div class="modal" tabindex="-1" role="dialog" id="myModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
+                <h5 class="modal-title">Add Task</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body border border-danger">
-                <form method="post" asp-action="Create" class="border border-primary form-container">
-
+            <div class="modal-body">
+                <form method="post" asp-action="Create" class="form-container">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <h2 class="text-info form-title" pl-3>Add Task</h2>
                     <div class="form-field">
                         <label for="">Task Name</label>
                         <input type="text" class="input-field">
                     </div>
-                    <div class="form-field">
-                        <label for="">Task Status</label>
-                        <input type="text" class="input-field">
-                    </div>
-
                 </form>
             </div>
             <div class="modal-footer">
@@ -102,12 +95,23 @@
 
 
 <script>
-    $('#myModal').click(function () {
-    $('#ModalPopup').modal('show');
-})
+    var task_test = @taskStatus;
 </script>
 
 
 <style>
-
+    .form-field{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 1rem;
+    }
+    .input-field{
+        height: 2rem;
+        border: 0.1rem solid black;
+        border-radius: 1rem;
+    }
+    label{
+        font-size: 1.2rem;
+        text-align: center;
+    }
 </style>
