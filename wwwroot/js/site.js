@@ -1,19 +1,11 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
-$(function(){
-    $('button[data-toggle="ajax-modal"]').click(function (event) {
-        var url = $(this).data('url');
-        $.get(url).done(function (data) {
-
-        })
-    })
-})
+﻿// $('#myModal').click(function () {
+//     $('#ModalPopup').modal('show');
+// });
 
 
-
-
-$('#myModal').click(function () {
-    $('#ModalPopup').modal('show');
-})
+// This is the code for calling the modal to popup
+var myModal = document.getElementById('myModal'); // only javascript code
+myModal.addEventListener('click', function(event)
+{
+    $("#ModalPopup").modal('show'); // this scope here is jQuery code
+});

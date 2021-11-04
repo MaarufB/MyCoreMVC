@@ -4,12 +4,11 @@
     List<string> myList = new List<string>();
     myList.Add("Ma-aruf");
     myList.Add("Burad");
-
-    string taskStatus = "Incomplete";   
+    
+    var actionStatus = "Create";
 }
 
 <div class="container" style="text-align:center;">
-
     @if (Model.Count() > 0)
     {
         <table>
@@ -40,7 +39,7 @@
                 <tr>
                     <th>Task Name</th>
                     <th>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="myModal"><i class="fas fa-plus"></i>&nbsp;Add</button>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" id="myModal"><i class="fas fa-plus"></i>&nbsp;Add</button>
                     </th>
                 </tr>
             </thead>
@@ -51,7 +50,14 @@
                         <td width="50%">@obj</td>
                         <td class="text-center">
                             <div class="w-75 btn-group" role="group">
-                                <a asp-controller="Category" asp-route-Id="@obj" asp-action="Edit" class="btn btn-primary mx-2">
+                                @* <a asp-controller="Category" asp-route-Id="@obj" asp-action="Edit" class="btn btn-primary mx-2">
+                                    <i class="fas fa-edit"></i>
+                                </a> *@
+
+                                @*
+                                    We will set An attribute to the todo-Edit Button
+                                *@
+                                <a id="todo-edit" class="btn btn-primary mx-2">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <a asp-controller="Category" asp-route-Id="@obj" asp-action="Delete" class="btn btn-danger mx-2">
@@ -67,7 +73,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal" tabindex="-1" role="dialog" id="myModal">
+<div class="modal fade" tabindex="-1" role="dialog" id="ModalPopup">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -77,6 +83,10 @@
                 </button>
             </div>
             <div class="modal-body">
+                @*
+                    We need to make this Form reusable by the edit action by changing the attributes value into edit
+                    <form method="post" asp-action="Create" class="form-container">
+                *@
                 <form method="post" asp-action="Create" class="form-container">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-field">
@@ -93,11 +103,18 @@
     </div>
 </div>
 
-
 <script>
-    var task_test = @taskStatus;
-</script>
+    var editBtn = document.getElementById('todo-edit');
+    
+    editBtn.addEventListener('click', function(event)
+    {
+        @actionStatus = "Edit";
+        var stats = "@actionStatus"
+        console.log(stats);
+    });
 
+
+</script>
 
 <style>
     .form-field{
@@ -109,6 +126,7 @@
         height: 2rem;
         border: 0.1rem solid black;
         border-radius: 1rem;
+        text-align: center;
     }
     label{
         font-size: 1.2rem;

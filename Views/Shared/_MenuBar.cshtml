@@ -1,0 +1,51 @@
+﻿<nav class="navbar navbar-expand-sm navbar-dark bg-dark m-0">
+    <div class="container w-100">
+        <a class="navbar-brand ml-0 mr-4" 
+            id="home" 
+            asp-controller="Home" 
+            asp-action="Index">MyCoreMVC</a>
+        <button class="navbar-toggler" 
+                type="button" 
+                data-toggle="collapse" 
+                data-target=".navbar-collapse" 
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false" 
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between m-1">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-light" 
+                        asp-area="" 
+                        asp-controller="Home" 
+                        asp-action="Index">My Project</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">Computer Vision</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-light"
+                        asp-area=""
+                        asp-controller="PartialTest"
+                        asp-action="TagHelpersTest" 
+                        >PartialViews</a>
+                </li>
+            </ul>
+            <div class="dropdown bg-dark">
+                <a class="dropdown-toggle text-light" 
+                    id="register-dropdown" 
+                    data-toggle="dropdown" 
+                    aria-haspopup="true" 
+                    aria-expanded="false">Sign-up</a>
+                <div class="dropdown-menu mt-3" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Register</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#" >Log-out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
