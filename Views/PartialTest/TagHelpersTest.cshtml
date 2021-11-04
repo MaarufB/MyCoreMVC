@@ -1,7 +1,17 @@
-﻿<div class="container">
+﻿
+
+<div class="container">
     @*
         This is the scope for Login: One of the TODO List
     *@
     <h1>This is for the tag helpers!</h1>
+
+    @{
+        Html.RenderPartial("_Login");
+    }
+
+        @ViewBag.CategorDtos.Id<br>
+        @ViewBag.CategorDtos.Name<br>
+        @ViewBag.CategorDtos.DisplayOrder<br>
     
 </div>

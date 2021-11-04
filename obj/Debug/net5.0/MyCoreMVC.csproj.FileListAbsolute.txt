@@ -443,5 +443,6 @@ D:\Dotnet\MyCoreMVC\obj\Debug\net5.0\Razor\Views\Todo\Index.cshtml.g.cs
 D:\Dotnet\MyCoreMVC\obj\Debug\net5.0\Razor\Views\Todo\CRUD.cshtml.g.cs
 D:\Dotnet\MyCoreMVC\obj\Debug\net5.0\Razor\Views\Todo\Edit.cshtml.g.cs
 D:\Dotnet\MyCoreMVC\obj\Debug\net5.0\Razor\Views\PartialTest\TagHelpersTest.cshtml.g.cs
-D:\Dotnet\MyCoreMVC\obj\Debug\net5.0\Razor\Views\PartialTest\_Login.cshtml.g.cs
 D:\Dotnet\MyCoreMVC\obj\Debug\net5.0\Razor\Views\Shared\_MenuBar.cshtml.g.cs
+D:\Dotnet\MyCoreMVC\obj\Debug\net5.0\Razor\Views\Shared\_Login.cshtml.g.cs
+D:\Dotnet\MyCoreMVC\obj\Debug\net5.0\Razor\Views\PartialTest\TestPartial.cshtml.g.cs

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MyCoreMVC.Models;
+using MyCoreMVC.DTOs;
 
 namespace MyCoreMVC.Controllers
 {
@@ -22,17 +23,18 @@ namespace MyCoreMVC.Controllers
         // This will be rendered for TagHelpersTest in PartialView
         public IActionResult TagHelpersTest()
         {
-            Console.WriteLine("TagHelpers Was Called!");
+            ViewBag.CategorDtos = new CategorDtos{
+                Id = 1,
+                Name = "View Bag",
+                DisplayOrder = "Test"
+            };
             return View();
         }
 
-        //  public IActionResult _Login()
-        //  {
-        //       return new PartialViewResult{
-        //          ViewName = "_Login",
-        //          ViewData = ViewData,
-        //       };
-        //  }
+    //   public IActionResult TestPartial()
+    //   {
+    //       return PartialView();
+    //   }
 
     }
 }

@@ -25,6 +25,7 @@ namespace MyCoreMVC.Controllers
 
         public IActionResult Privacy()
         {
+            ViewData["MyPrivacy"] = "Secret Life";
             return View();
         }
 

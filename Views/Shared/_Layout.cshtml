@@ -13,7 +13,9 @@
 <body>
 
     <header>
-        @Html.Partial("_MenuBar")    
+        @{
+            Html.RenderPartial("_MenuBar");
+        }   
     </header>
     <div class="container">
         <main role="main" class="mt-2 pb-3">
@@ -24,7 +26,6 @@
         <div class="container">
             &copy; 2021 - MyCoreMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-        <p class="container">@DateTime.Now.ToShortDateString()</p>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
