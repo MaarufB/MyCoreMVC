@@ -49,14 +49,20 @@ namespace MyCoreMVC.Controllers
         }
 
         // GET - EDIT
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<ActionResult<IEnumerable<CategorDtos>>> Edit(int? id)
         {
             if (id == null || id == 0) return NotFound();
 
             var category = await _context.Category.FindAsync(id);
             if (category == null) return NotFound();
 
-            return View(category);
+            var categoryDto = new CategorDtos{
+                Id = category.Id,
+                Name = category.Name,
+                DisplayOrder = category.DisplayOrder
+            };
+
+            return View(categoryDto);
 
         }
 

@@ -1,4 +1,8 @@
-﻿<div class="container">
+﻿@using MyCoreMVC.Models;
+@{
+    TagHelpersCustomModel tag = new TagHelpersCustomModel();
+}
+<div class="container">
     @*
         This is the scope for Login: One of the TODO List
     *@
@@ -14,8 +18,7 @@
         <div class="conatiner border border-danger">
         
         <!--Within this partial view it also render anothe partial view-->
-            <partial name="TestPartial"></partial>
-        
+            <partial name="TestPartial"></partial>        
         </div>
         
         <div class="container border border-danger">

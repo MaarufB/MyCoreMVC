@@ -15,6 +15,8 @@ namespace MyCoreMVC.Controllers
     {
         private readonly ILogger<PartialTestController> _logger;
 
+        public TagHelpersCustomModel CustomTagHelper { get; set; }
+
         public PartialTestController()
         {
 
@@ -27,8 +29,14 @@ namespace MyCoreMVC.Controllers
             ViewBag.CategorDtos = new CategorDtos{
                 Id = 1,
                 Name = "View Bag",
-                DisplayOrder = "Test"
+                DisplayOrder = 1
             };
+
+            CustomTagHelper = new TagHelpersCustomModel{
+                Name = "Ma-aruf",
+                Type = "ASP.NET CORE"
+            };
+
             return View();
         }
 
