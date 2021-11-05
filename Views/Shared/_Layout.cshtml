@@ -13,9 +13,16 @@
 <body>
 
     <header>
-        @{
+        
+        <!--
+            <partial name="_MenuBar"></partial>
             Html.RenderPartial("_MenuBar");
-        }   
+            await Html.RenderPartialAsync("_MenuBar.cshtml");
+            await Html.PartialAsync("_MenuBar.cshtml");  
+        -->
+        <!-- Note that you can use either <partial> tag or await Html.PartialAsync() to render partial view asyncronously an it is very clean-->
+        <partial name="_MenuBar"></partial>       
+
     </header>
     <div class="container">
         <main role="main" class="mt-2 pb-3">

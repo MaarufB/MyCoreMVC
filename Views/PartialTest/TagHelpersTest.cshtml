@@ -5,13 +5,23 @@
         This is the scope for Login: One of the TODO List
     *@
     <h1>This is for the tag helpers!</h1>
+    
+    @* This Partial view here can cause a deadlock to the running applicaition so it is not recommended *@
+    <!--
 
-    @{
-        Html.RenderPartial("_Login");
+        Html.RenderPartialAsync("_Login");
     }
+    -->
+    <partial name="_Login"></partial>
 
+    <div class="container border border-danger">
         @ViewBag.CategorDtos.Id<br>
         @ViewBag.CategorDtos.Name<br>
         @ViewBag.CategorDtos.DisplayOrder<br>
-    
+    </div>
+
+    @* This partial view here is asynchronous type. *@
+    <div class="container">
+        @* <partial name="_Login"></partial>         *@
+    </div>
 </div>
