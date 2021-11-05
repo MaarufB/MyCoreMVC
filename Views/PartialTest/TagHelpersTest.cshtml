@@ -1,32 +1,34 @@
-﻿
-
-<div class="container">
+﻿<div class="container">
     @*
         This is the scope for Login: One of the TODO List
     *@
     <h1>Tag Helpers with PartialView</h1>
     
     @* This Partial view here can cause a deadlock to the running applicaition so it is not recommended *@
+    
     <!--
-
         Html.RenderPartialAsync("_Login");
-    }
     -->
 
     <div class="container main-container">
         <div class="conatiner border border-danger">
+        
         <!--Within this partial view it also render anothe partial view-->
-        <partial name="TestPartial"></partial>
+            <partial name="TestPartial"></partial>
+        
         </div>
+        
         <div class="container border border-danger">
-            @ViewBag.CategorDtos.Id<br>
-            @ViewBag.CategorDtos.Name<br>
-            @ViewBag.CategorDtos.DisplayOrder<br>
+            <ul>
+                <li>@ViewBag.CategorDtos.Id<br></li>
+                <li>@ViewBag.CategorDtos.Name<br></li>
+                <li>@ViewBag.CategorDtos.DisplayOrder<br></li>
+            </ul>
         </div>
 
         @* This partial view here is asynchronous type. *@
         <div class="container border border-primary">
-            <partial name="_Login"></partial>
+            @await Html.PartialAsync("_login", ViewData)
         </div>
     </div>
 

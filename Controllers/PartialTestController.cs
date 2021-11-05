@@ -23,6 +23,7 @@ namespace MyCoreMVC.Controllers
         // This will be rendered for TagHelpersTest in PartialView
         public IActionResult TagHelpersTest()
         {
+            ViewData["PartialData"] = "This is the Partial Data Test";
             ViewBag.CategorDtos = new CategorDtos{
                 Id = 1,
                 Name = "View Bag",
