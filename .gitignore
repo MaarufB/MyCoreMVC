@@ -201,8 +201,8 @@ ecf/
 rcf/
 
 # bin
-/bin/*
-/obj/*
+/bin
+/obj
 *.vscode
 Resources/*
 
