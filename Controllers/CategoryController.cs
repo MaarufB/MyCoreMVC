@@ -20,11 +20,21 @@ namespace MyCoreMVC.Controllers
         }
         
         [HttpGet]
-       public async Task<ActionResult<IEnumerable<Category>>> Index()
+       public async Task<ActionResult<IEnumerable<Category>>> Index(string searchString)
         {
-            var cat = await _context.Category.ToListAsync();
+            var categories = from m in _context.Category select m;
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                categories = categories.Where(s => s.Name.Contains(searchString));
+            }
+            // var cat = await _context.Category.ToListAsync();
             
-            return View(cat);
+            return View(await categories.ToListAsync());
+        }
+
+        public async Task<string> Index(string searchString, bool notUsed)
+        {
+            return $"From [HttpPost]Index: filter on {searchString}";
         }
 
         //GET - CREATE
@@ -38,7 +48,16 @@ namespace MyCoreMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Category obj)
         {
-            if (ModelState.IsValid)
+            // if (ModelState.IsValid)
+            // {
+            //     await _context.Category.AddAsync(obj);
+            //     await _context.SaveChangesAsync();
+            //     return RedirectToAction("Index");
+            // }
+
+            if (await CategoryExist(obj.Name)) return BadRequest("CategoryName was already exist!"); // We can use PartialView Return or a Bad Request
+
+            while(ModelState.IsValid)
             {
                 await _context.Category.AddAsync(obj);
                 await _context.SaveChangesAsync();
@@ -53,16 +72,18 @@ namespace MyCoreMVC.Controllers
         {
             if (id == null || id == 0) return NotFound();
 
-            var category = await _context.Category.FindAsync(id);
+            var category = await _context.Category.FirstOrDefaultAsync(x => x.Id == id);
             if (category == null) return NotFound();
 
+
+            // var cat = await _context.Category.AnyAsync(x => x.Id == id);
             var categoryDto = new CategorDtos{
                 Id = category.Id,
                 Name = category.Name,
                 DisplayOrder = category.DisplayOrder
             };
 
-            return View(categoryDto);
+             return View(categoryDto);
 
         }
 
@@ -72,16 +93,14 @@ namespace MyCoreMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Category category)
         {
-
-            if (ModelState.IsValid)
+            while (ModelState.IsValid)
             {
-                 _context.Category.Update(category);
+                _context.Category.Update(category);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
             return View(category);
-
         }
 
         // GET - DELETE
@@ -109,6 +128,11 @@ namespace MyCoreMVC.Controllers
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
+        }
+
+        private async Task<bool> CategoryExist(string categoryName)
+        {
+            return await _context.Category.AnyAsync(x => x.Name == categoryName);
         }
     }
 }

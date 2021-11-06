@@ -30,7 +30,9 @@ namespace MyCoreMVC
             {
                 options.UseSqlServer(_config.GetConnectionString("DefaultConnection"));
              });
-            
+
+             
+            services.AddControllers();
                   
             services.AddControllersWithViews();
             //This is for testing
@@ -64,8 +66,9 @@ namespace MyCoreMVC
                   endpoints.MapControllerRoute(
                      name: "default",
                      pattern: "{controller=Home}/{action=Index}/{id?}");
-                //endpoints.MapControllers();
+                endpoints.MapControllers();
                 endpoints.MapRazorPages();
+
             });
         }
     }
