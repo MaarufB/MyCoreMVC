@@ -12,10 +12,10 @@
             </a>
         </div>
         <div class="search-text">
-            <form asp-controller="Category" asp-action="Index">
+            <form asp-controller="Category" asp-action="Index" method="get"> <!-- We can use post method also -->
                 <label>Search</label>
                 <input type="text" name="searchString">
-                <button type="submit" value="searchString">Search</button>
+                <input type="submit" value="Filter">
             </form>
         </div>
     </div>

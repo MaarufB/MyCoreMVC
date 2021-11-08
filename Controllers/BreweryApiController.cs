@@ -15,7 +15,7 @@ namespace MyCoreMVC.Controllers
         {
             Console.WriteLine($"Text");
             
-            return Ok("Ok");
+            return Ok("Test");
         }
     }
 }

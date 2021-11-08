@@ -32,9 +32,16 @@ namespace MyCoreMVC.Controllers
             return View(await categories.ToListAsync());
         }
 
-        public async Task<string> Index(string searchString, bool notUsed)
+        [HttpPost]
+        public async Task<ActionResult<IEnumerable<Category>>> Index(string searchString, bool notUsed)
         {
-            return $"From [HttpPost]Index: filter on {searchString}";
+            var categories = from m in _context.Category select m;
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                categories = categories.Where(s => s.Name.Contains(searchString));
+            }
+
+            return View(await categories.ToListAsync());
         }
 
         //GET - CREATE
