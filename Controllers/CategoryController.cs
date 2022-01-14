@@ -23,6 +23,7 @@ namespace MyCoreMVC.Controllers
        public async Task<ActionResult<IEnumerable<Category>>> Index(string searchString)
         {
             var categories = from m in _context.Category select m;
+            
             if(!String.IsNullOrEmpty(searchString))
             {
                 categories = categories.Where(s => s.Name.Contains(searchString));
@@ -51,67 +52,43 @@ namespace MyCoreMVC.Controllers
             return View();
         }
 
-        // POST - INSERT
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Category obj)
+        // [HttpPost]
+        public async Task<IActionResult> Upsert(int? id)
         {
-            // if (ModelState.IsValid)
-            // {
-            //     await _context.Category.AddAsync(obj);
-            //     await _context.SaveChangesAsync();
-            //     return RedirectToAction("Index");
-            // }
-
-            if (await CategoryExist(obj.Name)) return BadRequest("CategoryName was already exist!"); // We can use PartialView Return or a Bad Request
-
-            while(ModelState.IsValid)
+            var categoryObj = new Category();
+            if (id== null || id == 0)  return View(categoryObj);
+            
+            else 
             {
-                await _context.Category.AddAsync(obj);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                categoryObj = await _context.Category.FirstOrDefaultAsync(c => c.Id == id);
+                return View(categoryObj);
             }
-            return View(obj);
-
         }
 
-        // GET - EDIT
-        public async Task<ActionResult<IEnumerable<CategorDtos>>> Edit(int? id)
-        {
-            if (id == null || id == 0) return NotFound();
-
-            var category = await _context.Category.FirstOrDefaultAsync(x => x.Id == id);
-            if (category == null) return NotFound();
-
-
-            // var cat = await _context.Category.AnyAsync(x => x.Id == id);
-            var categoryDto = new CategorDtos{
-                Id = category.Id,
-                Name = category.Name,
-                DisplayOrder = category.DisplayOrder
-            };
-
-             return View(categoryDto);
-
-        }
-
-
-        // POST - EDIT
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Category category)
+        public async Task<IActionResult> Upsert(Category categoryObj)
         {
-            while (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
-                _context.Category.Update(category);
+                if(categoryObj.Id == 0)
+                {
+                    await _context.Category.AddAsync(categoryObj);
+                    TempData["success"] = "Category created successfully";
+                }
+                else
+                {
+                    _context.Category.Update(categoryObj);
+                }
+
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction("Index");
             }
 
-            return View(category);
+            return View(categoryObj);
         }
 
-        // GET - DELETE
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || id == 0) return NotFound();

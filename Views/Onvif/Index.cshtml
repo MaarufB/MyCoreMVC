@@ -1,0 +1,59 @@
+﻿<div class="card-container parent">
+    <h1>This is the Onvif Controller</h1>
+
+
+    <div class="container border border-danger grid-container">
+        <div class="border border-primary grid-item">
+            <video id="video_source" width="720" height="640" controls="controls">
+                <source src="rtsp://admin:97315star@220.130.148.107:554/stream0">
+            </video>
+        </div>
+        <div class="border border-success grid-item grid-item-controller">
+            <button class="btn-up btn-item">Up</button>
+            <div class="btn-left-right">
+                <button class="btn-left btn-item">Left</button>
+                <button class="btn-right btn-item">Right</button>
+            </div>
+            <button class="btn-down btn-item">Down</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    .parent{
+        display:flex;
+        flex-direction:column;
+    }
+
+        .parent .grid-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            height: 40rem;
+        }
+
+        .parent .grid-item-controller{
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr;
+        }
+
+        .parent .grid-item-controller .btn-left-right{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .btn-item{
+            border-radius: 1rem;
+        }
+</style>
+
+<script>
+    //rtsp://admin:97315star@220.130.148.107:554/stream0
+    window.onload = function () {
+        if (Wfs.isSupported()) {
+            var video1 = document.getElementById("video1"),
+                wfs = new Wfs();
+            wfs.attachMedia(video1, 'ch1');
+        }
+    };
+
+</script>

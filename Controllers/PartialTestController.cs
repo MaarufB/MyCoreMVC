@@ -13,7 +13,7 @@ namespace MyCoreMVC.Controllers
     [Route("[controller]")]
     public class PartialTestController : Controller
     {
-        private readonly ILogger<PartialTestController> _logger;
+        //private readonly ILogger<PartialTestController> _logger;
 
         public TagHelpersCustomModel CustomTagHelper { get; set; }
 

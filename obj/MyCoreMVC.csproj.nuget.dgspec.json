@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Dotnet\\MyCoreMVC\\MyCoreMVC.csproj": {}
+    "D:\\MyFiles\\SofwareCareerPath\\Dotnet Development\\MyCoreMVC\\MyCoreMVC.csproj": {}
   },
   "projects": {
-    "D:\\Dotnet\\MyCoreMVC\\MyCoreMVC.csproj": {
+    "D:\\MyFiles\\SofwareCareerPath\\Dotnet Development\\MyCoreMVC\\MyCoreMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dotnet\\MyCoreMVC\\MyCoreMVC.csproj",
+        "projectUniqueName": "D:\\MyFiles\\SofwareCareerPath\\Dotnet Development\\MyCoreMVC\\MyCoreMVC.csproj",
         "projectName": "MyCoreMVC",
-        "projectPath": "D:\\Dotnet\\MyCoreMVC\\MyCoreMVC.csproj",
+        "projectPath": "D:\\MyFiles\\SofwareCareerPath\\Dotnet Development\\MyCoreMVC\\MyCoreMVC.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Dotnet\\MyCoreMVC\\obj\\",
+        "outputPath": "D:\\MyFiles\\SofwareCareerPath\\Dotnet Development\\MyCoreMVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -70,6 +70,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[5.0.2, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
             }
           },
           "imports": [
@@ -82,6 +86,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.12, 5.0.12]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -90,7 +100,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
