@@ -874,9 +874,13 @@ D:\MyFiles\SofwareCareerPath\Dotnet Development\MyCoreMVC\obj\Debug\net5.0\Razor
 D:\MyFiles\SofwareCareerPath\Dotnet Development\MyCoreMVC\obj\Debug\net5.0\Razor\Views\ApplicationType\Delete.cshtml.g.cs
 D:\MyFiles\SofwareCareerPath\Dotnet Development\MyCoreMVC\obj\Debug\net5.0\Razor\Views\ApplicationType\Edit.cshtml.g.cs
 D:\MyFiles\SofwareCareerPath\Dotnet Development\MyCoreMVC\obj\Debug\net5.0\Razor\Views\ApplicationType\Index.cshtml.g.cs
+<<<<<<< HEAD
 D:\MyFiles\SofwareCareerPath\Dotnet Development\MyCoreMVC\obj\Debug\net5.0\Razor\Views\Category\Create.cshtml.g.cs
 D:\MyFiles\SofwareCareerPath\Dotnet Development\MyCoreMVC\obj\Debug\net5.0\Razor\Views\Category\Delete.cshtml.g.cs
 D:\MyFiles\SofwareCareerPath\Dotnet Development\MyCoreMVC\obj\Debug\net5.0\Razor\Views\Category\Edit.cshtml.g.cs
+=======
+D:\MyFiles\SofwareCareerPath\Dotnet Development\MyCoreMVC\obj\Debug\net5.0\Razor\Views\Category\Delete.cshtml.g.cs
+>>>>>>> 2d4ede1cb2813a4beb226ad563067138bc61edfd
 D:\MyFiles\SofwareCareerPath\Dotnet Development\MyCoreMVC\obj\Debug\net5.0\Razor\Views\Category\Index.cshtml.g.cs
 D:\MyFiles\SofwareCareerPath\Dotnet Development\MyCoreMVC\obj\Debug\net5.0\Razor\Views\Category\_Table.cshtml.g.cs
 D:\MyFiles\SofwareCareerPath\Dotnet Development\MyCoreMVC\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
@@ -904,6 +908,7 @@ D:\MyFiles\SofwareCareerPath\Dotnet Development\MyCoreMVC\obj\Debug\net5.0\MyCor
 D:\MyFiles\SofwareCareerPath\Dotnet Development\MyCoreMVC\obj\Debug\net5.0\MyCoreMVC.genruntimeconfig.cache
 D:\MyFiles\SofwareCareerPath\Dotnet Development\MyCoreMVC\obj\Debug\net5.0\MyCoreMVC.csproj.CopyComplete
 D:\MyFiles\SofwareCareerPath\Dotnet Development\MyCoreMVC\obj\Debug\net5.0\Razor\Views\ApplicationType\Upsert.cshtml.g.cs
+<<<<<<< HEAD
 D:\My_Files\SofwareCareerPath\Dotnet Development\MyCoreMVC\bin\Debug\net5.0\appsettings.Development.json
 D:\My_Files\SofwareCareerPath\Dotnet Development\MyCoreMVC\bin\Debug\net5.0\appsettings.json
 D:\My_Files\SofwareCareerPath\Dotnet Development\MyCoreMVC\bin\Debug\net5.0\MyCoreMVC.StaticWebAssets.xml
@@ -1359,3 +1364,6 @@ D:\My_Files\SofwareCareerPath\Dotnet Development\MyCoreMVC\obj\Debug\net5.0\MyCo
 D:\My_Files\SofwareCareerPath\Dotnet Development\MyCoreMVC\obj\Debug\net5.0\ref\MyCoreMVC.dll
 D:\My_Files\SofwareCareerPath\Dotnet Development\MyCoreMVC\obj\Debug\net5.0\MyCoreMVC.pdb
 D:\My_Files\SofwareCareerPath\Dotnet Development\MyCoreMVC\obj\Debug\net5.0\MyCoreMVC.genruntimeconfig.cache
+=======
+D:\MyFiles\SofwareCareerPath\Dotnet Development\MyCoreMVC\obj\Debug\net5.0\Razor\Views\Category\Upsert.cshtml.g.cs
+>>>>>>> 2d4ede1cb2813a4beb226ad563067138bc61edfd

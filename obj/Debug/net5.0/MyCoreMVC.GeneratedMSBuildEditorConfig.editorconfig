@@ -7,4 +7,8 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MyCoreMVC
+<<<<<<< HEAD
 build_property.ProjectDir = D:\My_Files\SofwareCareerPath\Dotnet Development\MyCoreMVC\
+=======
+build_property.ProjectDir = D:\MyFiles\SofwareCareerPath\Dotnet Development\MyCoreMVC\
+>>>>>>> 2d4ede1cb2813a4beb226ad563067138bc61edfd

@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "D:\\My_Files\\SofwareCareerPath\\Dotnet Development\\MyCoreMVC\\MyCoreMVC.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "D:\\My_Files\\SofwareCareerPath\\Dotnet Development\\MyCoreMVC\\MyCoreMVC.csproj",
         "packagesPath": "C:\\Users\\SKYLAND-14\\.nuget\\packages\\",
         "outputPath": "D:\\My_Files\\SofwareCareerPath\\Dotnet Development\\MyCoreMVC\\obj\\",
+=======
+    "D:\\MyFiles\\SofwareCareerPath\\Dotnet Development\\MyCoreMVC\\MyCoreMVC.csproj": {}
+  },
+  "projects": {
+    "D:\\MyFiles\\SofwareCareerPath\\Dotnet Development\\MyCoreMVC\\MyCoreMVC.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\MyFiles\\SofwareCareerPath\\Dotnet Development\\MyCoreMVC\\MyCoreMVC.csproj",
+        "projectName": "MyCoreMVC",
+        "projectPath": "D:\\MyFiles\\SofwareCareerPath\\Dotnet Development\\MyCoreMVC\\MyCoreMVC.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\MyFiles\\SofwareCareerPath\\Dotnet Development\\MyCoreMVC\\obj\\",
+>>>>>>> 2d4ede1cb2813a4beb226ad563067138bc61edfd
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -87,6 +101,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.12, 5.0.12]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -95,7 +115,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+>>>>>>> 2d4ede1cb2813a4beb226ad563067138bc61edfd
         }
       }
     }

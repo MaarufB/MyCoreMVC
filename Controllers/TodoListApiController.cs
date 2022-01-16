@@ -11,6 +11,7 @@ namespace MyCoreMVC.Controllers
 {
     [ApiController]
     [Route("api/[controller]/[action]")]
+    [Produces("application/json")]
     public class TodoListApiController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -20,7 +21,6 @@ namespace MyCoreMVC.Controllers
         }
 
         [HttpGet]
-        [Produces("application/json")]
         public async Task<ActionResult<IEnumerable<TodoModel>>> GetItems()
         {
             var todoList = await _context.TodoList.ToListAsync();
@@ -40,7 +40,15 @@ namespace MyCoreMVC.Controllers
         {
                 System.Console.WriteLine("Hehe");
         }
+<<<<<<< HEAD
 
 
+=======
+        
+        private void GetDataTest()
+        {
+            Console.WriteLine("This is a test");
+        }
+>>>>>>> 2d4ede1cb2813a4beb226ad563067138bc61edfd
     }
 }
