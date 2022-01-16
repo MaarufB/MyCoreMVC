@@ -14,56 +14,29 @@ namespace MyCoreMVC.Controllers
     {
         private readonly IApplicationTypeRepository _repository;
         private readonly ApplicationDbContext _context;
-        public ApplicationTypeController(ApplicationDbContext context, IApplicationTypeRepository repository)
+        private readonly IUnitOfWork _unitOfWork;
+
+        public ApplicationTypeController(
+                                          ApplicationDbContext context, 
+                                          IApplicationTypeRepository repository,
+                                          IUnitOfWork unitOfWork)
         {
             _context = context;
             _repository = repository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<ActionResult<IEnumerable<ApplicationType>>> Index()
         {
-<<<<<<< HEAD
             //var app_type = await _context.ApplicationType.ToListAsync();
-            var applicationTypeObj = await _repository.GetAllAsync();
+            //var applicationTypeObj = await _repository.GetAllAsync();
 
-            return View(applicationTypeObj);
-=======
-            var app_type = await _context.ApplicationType.ToListAsync();
+            var applicationUnitObj = await _unitOfWork.ApplicationTypeRepository.GetAllAsync();
 
-            return View(app_type);
->>>>>>> 2d4ede1cb2813a4beb226ad563067138bc61edfd
+            return View(applicationUnitObj);
         }
 
         
-        public async Task<IActionResult> Upsert(int? id)
-        {
-            var applicationType = new ApplicationType();
-            if (id == null || id == 0)
-            {
-                return View(applicationType);
-            }
-            else
-            {
-                applicationType = await _context.ApplicationType.FindAsync(id);
-                return View(applicationType);
-            }
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Upsert(ApplicationType obj)
-        {
-            if (ModelState.IsValid)
-            {
-<<<<<<< HEAD
-                await _context.ApplicationType.AddAsync(app_obj);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-            return View(app_obj);
-
-        }
-
         public async Task<IActionResult> Upsert(int? id)
         {
             var applicationType = new ApplicationType();
@@ -120,23 +93,12 @@ namespace MyCoreMVC.Controllers
         // POST - EDIT
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(ApplicationType app_type_obj)
+        public async Task<IActionResult> Edit(ApplicationType obj)
         {
 
             if (ModelState.IsValid)
             {
-                _context.ApplicationType.Update(app_type_obj);
-=======
-                if(obj.Id == 0)
-                {
-                    await _context.ApplicationType.AddAsync(obj);
-                }
-                else
-                {
-                     _context.ApplicationType.Update(obj);
-                }
-                
->>>>>>> 2d4ede1cb2813a4beb226ad563067138bc61edfd
+                _context.ApplicationType.Update(obj);
                 await _context.SaveChangesAsync();
                 
                 return RedirectToAction("Index");
@@ -158,13 +120,9 @@ namespace MyCoreMVC.Controllers
 
         }
 
-<<<<<<< HEAD
         
 
 
-=======
-    
->>>>>>> 2d4ede1cb2813a4beb226ad563067138bc61edfd
         // POST - DELETE  
         [HttpPost]
         [ValidateAntiForgeryToken]

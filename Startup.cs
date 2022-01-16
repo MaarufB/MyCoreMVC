@@ -34,7 +34,8 @@ namespace MyCoreMVC
              });
 
             services.AddScoped<IApplicationTypeRepository, ApplicationTypeRepository>();
-             
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             services.AddControllers();
                   
             services.AddControllersWithViews();

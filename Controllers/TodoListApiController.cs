@@ -40,15 +40,10 @@ namespace MyCoreMVC.Controllers
         {
                 System.Console.WriteLine("Hehe");
         }
-<<<<<<< HEAD
-
-
-=======
         
         private void GetDataTest()
         {
             Console.WriteLine("This is a test");
         }
->>>>>>> 2d4ede1cb2813a4beb226ad563067138bc61edfd
     }
 }
