@@ -36,6 +36,11 @@ namespace MyCoreMVC.Controllers
             return Ok(todo);
         }
 
+        private void GetData()
+        {
+                System.Console.WriteLine("Hehe");
+        }
+
 
     }
 }

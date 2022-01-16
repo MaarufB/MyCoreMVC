@@ -6,22 +6,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using MyCoreMVC.IRepository;
 
 namespace MyCoreMVC.Controllers
 {
     public class ApplicationTypeController : Controller
     {
-
+        private readonly IApplicationTypeRepository _repository;
         private readonly ApplicationDbContext _context;
-        public ApplicationTypeController(ApplicationDbContext context)
+        public ApplicationTypeController(ApplicationDbContext context, IApplicationTypeRepository repository)
         {
             _context = context;
+            _repository = repository;
         }
 
         public async Task<ActionResult<IEnumerable<ApplicationType>>> Index()
         {
-            var app_type = await _context.ApplicationType.ToListAsync();
-            return View(app_type);
+            //var app_type = await _context.ApplicationType.ToListAsync();
+            var applicationTypeObj = await _repository.GetAllAsync();
+
+            return View(applicationTypeObj);
         }
 
         //GET - CREATE
@@ -43,6 +47,46 @@ namespace MyCoreMVC.Controllers
             }
             return View(app_obj);
 
+        }
+
+        public async Task<IActionResult> Upsert(int? id)
+        {
+            var applicationType = new ApplicationType();
+            if (id == null || id == 0)
+            {
+                return View(applicationType);
+            }
+            else
+            {
+                applicationType = await _context.ApplicationType.FindAsync(id);
+                return View(applicationType);
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Upsert(ApplicationType obj)
+        {
+            if (ModelState.IsValid)
+            {
+                if(obj.Id == 0)
+                {
+                    //await _context.ApplicationType.AddAsync(obj);
+                    await _repository.AddAsync(obj);
+                }
+                else
+                {
+                     //_context.ApplicationType.Update(obj);
+                    await _repository.Update(obj);
+                }
+
+                //await _context.SaveChangesAsync();
+                await _repository.SaveChangesAsync();
+                
+                return RedirectToAction("Index");
+            }
+
+            return View(obj);
         }
 
 
@@ -86,6 +130,8 @@ namespace MyCoreMVC.Controllers
             return View(app_type_obj);
 
         }
+
+        
 
 
         // POST - DELETE  

@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyCoreMVC.Data;
+using MyCoreMVC.IRepository;
+using MyCoreMVC.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +33,7 @@ namespace MyCoreMVC
                 options.UseSqlServer(_config.GetConnectionString("DefaultConnection"));
              });
 
+            services.AddScoped<IApplicationTypeRepository, ApplicationTypeRepository>();
              
             services.AddControllers();
                   
@@ -67,7 +70,7 @@ namespace MyCoreMVC
             {
                   endpoints.MapControllerRoute(
                      name: "default",
-                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                     pattern: "{controller=Category}/{action=Index}/{id?}");
                 endpoints.MapControllers();
                 endpoints.MapRazorPages();
 
