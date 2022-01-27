@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NToastNotify;
 
 namespace MyCoreMVC.Controllers
 {
@@ -14,9 +15,11 @@ namespace MyCoreMVC.Controllers
     public class CategoryController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public CategoryController(ApplicationDbContext context)
+        private readonly IToastNotification _toastNotification;
+        public CategoryController(ApplicationDbContext context, IToastNotification toastNotification)
         {
             _context = context;
+            _toastNotification = toastNotification;
         }
         
         [HttpGet]
@@ -74,7 +77,7 @@ namespace MyCoreMVC.Controllers
                 if(categoryObj.Id == 0)
                 {
                     await _context.Category.AddAsync(categoryObj);
-                    TempData["success"] = "Category created successfully";
+                    //TempData["success"] = "Category created successfully";
                 }
                 else
                 {
@@ -82,6 +85,8 @@ namespace MyCoreMVC.Controllers
                 }
 
                 await _context.SaveChangesAsync();
+                TempData["success"] = "Category created successfully";
+                _toastNotification.AddSuccessToastMessage("Category created successfully!");
 
                 return RedirectToAction("Index");
             }
@@ -100,13 +105,13 @@ namespace MyCoreMVC.Controllers
 
         }
 
-
         // POST - DELETE  
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeletePost(int? id)
         {
             var category = await _context.Category.FindAsync(id);
+        
             if (category == null) return NotFound();
 
             _context.Category.Remove(category);

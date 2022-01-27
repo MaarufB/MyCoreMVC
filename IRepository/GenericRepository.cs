@@ -1,42 +1,46 @@
 ﻿using MyCoreMVC.Data;
-using MyCoreMVC.IRepository;
-using MyCoreMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MyCoreMVC.Repository
+namespace MyCoreMVC.IRepository
 {
-    public class CategoryRepository : ICategoryRepository
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly ApplicationDbContext _context;
-        public CategoryRepository(ApplicationDbContext context)
+        public GenericRepository(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public Task AddSync(Category obj)
+
+        public async Task AddAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Category>> GetAllAsync()
+        public Task DeleteAsync()
         {
             throw new NotImplementedException();
         }
 
-        Task ICategoryRepository.AddAsync(Category obj)
+        public Task<IEnumerable<T>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        Task<IEnumerable<Category>> ICategoryRepository.GetAllAsync()
+        public Task<T> GetByIdAsync()
         {
             throw new NotImplementedException();
         }
 
-        Task ICategoryRepository.GetSingleAsync(int? id)
+        public Task SaveAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Update()
         {
             throw new NotImplementedException();
         }

@@ -12,5 +12,7 @@ namespace MyCoreMVC.IRepository
         Task AddAsync(ApplicationType obj);
         Task SaveChangesAsync();
         Task Update(ApplicationType obj);
+        Task DeleteAsync(ApplicationType obj);
+        Task<ApplicationType> FindAsync(int? id);
     }
 }

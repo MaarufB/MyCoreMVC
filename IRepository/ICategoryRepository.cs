@@ -8,10 +8,10 @@ namespace MyCoreMVC.IRepository
 {
     public interface ICategoryRepository
     {
-        Task GetAllAsync();
+        Task <IEnumerable<Category>> GetAllAsync();
         Task GetSingleAsync(int? id);
         Task AddAsync(Category obj);
-        Task UpdateAsync(int id);
-        Task DeleteAsync(int id);
+        //Task UpdateAsync(int id);
+        //Task DeleteAsync(int id);
     }
 }

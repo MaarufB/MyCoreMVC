@@ -23,6 +23,11 @@ namespace MyCoreMVC.Repository
             return applicationTypeObj;
         }
 
+        public async Task<ApplicationType> FindAsync(int? id)
+        {
+            return await _context.ApplicationType.FindAsync(id);
+        }
+
         public async Task AddAsync(ApplicationType obj)
         {
             await _context.ApplicationType.AddAsync(obj);
@@ -36,6 +41,10 @@ namespace MyCoreMVC.Repository
         public async Task Update(ApplicationType obj)
         {
             _context.ApplicationType.Update(obj);
+        }
+        public async Task DeleteAsync(ApplicationType obj)
+        {
+            _context.Remove(obj);
         }
     }
 }

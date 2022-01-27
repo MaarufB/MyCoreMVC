@@ -1,3 +1,4 @@
 ﻿<StaticWebAssets Version="1.0">
   <ContentRoot BasePath="/" Path="D:\My_Files\SofwareCareerPath\Dotnet Development\MyCoreMVC\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="_content/NToastNotify" Path="C:\Users\SKYLAND-14\.nuget\packages\ntoastnotify\7.0.0\build\..\staticwebassets\" />
 </StaticWebAssets>

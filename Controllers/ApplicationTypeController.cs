@@ -12,31 +12,20 @@ namespace MyCoreMVC.Controllers
 {
     public class ApplicationTypeController : Controller
     {
-        private readonly IApplicationTypeRepository _repository;
-        private readonly ApplicationDbContext _context;
         private readonly IUnitOfWork _unitOfWork;
 
-        public ApplicationTypeController(
-                                          ApplicationDbContext context, 
-                                          IApplicationTypeRepository repository,
-                                          IUnitOfWork unitOfWork)
+        public ApplicationTypeController(IUnitOfWork unitOfWork)
         {
-            _context = context;
-            _repository = repository;
             _unitOfWork = unitOfWork;
         }
 
         public async Task<ActionResult<IEnumerable<ApplicationType>>> Index()
         {
-            //var app_type = await _context.ApplicationType.ToListAsync();
-            //var applicationTypeObj = await _repository.GetAllAsync();
-
             var applicationUnitObj = await _unitOfWork.ApplicationTypeRepository.GetAllAsync();
 
             return View(applicationUnitObj);
         }
 
-        
         public async Task<IActionResult> Upsert(int? id)
         {
             var applicationType = new ApplicationType();
@@ -46,7 +35,7 @@ namespace MyCoreMVC.Controllers
             }
             else
             {
-                applicationType = await _context.ApplicationType.FindAsync(id);
+                applicationType = await _unitOfWork.ApplicationTypeRepository.FindAsync(id);
                 return View(applicationType);
             }
         }
@@ -59,17 +48,16 @@ namespace MyCoreMVC.Controllers
             {
                 if(obj.Id == 0)
                 {
-                    //await _context.ApplicationType.AddAsync(obj);
-                    await _repository.AddAsync(obj);
+                    await _unitOfWork.ApplicationTypeRepository.AddAsync(obj);
                 }
                 else
                 {
-                     //_context.ApplicationType.Update(obj);
-                    await _repository.Update(obj);
+
+                    await _unitOfWork.ApplicationTypeRepository.Update(obj);
                 }
 
-                //await _context.SaveChangesAsync();
-                await _repository.SaveChangesAsync();
+
+                await _unitOfWork.SaveChangeAsync();
                 
                 return RedirectToAction("Index");
             }
@@ -83,56 +71,40 @@ namespace MyCoreMVC.Controllers
         {
             if (id == null || id == 0) return NotFound();
 
-            var app_type_obj = await _context.ApplicationType.FindAsync(id);
+            var app_type_obj = await _unitOfWork.ApplicationTypeRepository.FindAsync(id);
             if (app_type_obj == null) return NotFound();
 
             return View(app_type_obj);
 
         }
 
-        // POST - EDIT
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(ApplicationType obj)
-        {
-
-            if (ModelState.IsValid)
-            {
-                _context.ApplicationType.Update(obj);
-                await _context.SaveChangesAsync();
-                
-                return RedirectToAction("Index");
-            }
-
-            return View(obj);
-        }
-
 
         // GET - DELETE
         public async Task<IActionResult> Delete(int? id)
         {
-           if (id == null || id == 0) return NotFound();
+           if (id == null || id == 0) 
+                return NotFound();
 
-           var app_type_obj = await _context.ApplicationType.FindAsync(id);
-           if (app_type_obj== null) return NotFound();
+            var app_type_obj = await _unitOfWork.ApplicationTypeRepository.FindAsync(id);
+           
+            if (app_type_obj== null) 
+                return NotFound();
 
            return View(app_type_obj);
 
         }
 
-        
-
-
-        // POST - DELETE  
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeletePost(int? id)
         {
-            var app_type_obj = await _context.ApplicationType.FindAsync(id);
-            if (app_type_obj == null) return NotFound();
+            var app_type_obj = await   _unitOfWork.ApplicationTypeRepository.FindAsync(id);
+            if (app_type_obj == null) 
+                return NotFound();
 
-            _context.ApplicationType.Remove(app_type_obj);
-            await _context.SaveChangesAsync();
+            await _unitOfWork.ApplicationTypeRepository.DeleteAsync(app_type_obj);
+
+            await _unitOfWork.SaveChangeAsync();
 
             return RedirectToAction("Index");
         }
@@ -150,7 +122,6 @@ namespace MyCoreMVC.Controllers
 
         //     return Json(new { success = true, message = "Application Type successfully deleted!" });
         // }
-
 
         // #endregion
     }

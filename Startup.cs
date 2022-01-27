@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using MyCoreMVC.Data;
 using MyCoreMVC.IRepository;
 using MyCoreMVC.Repository;
+using NToastNotify;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,13 @@ namespace MyCoreMVC
             {
                 options.UseSqlServer(_config.GetConnectionString("DefaultConnection"));
              });
+            services.AddMvc().AddNToastNotifyToastr(new ToastrOptions() 
+            {
+                ProgressBar = false,
+                PositionClass = ToastPositions.TopRight,
+                CloseButton = true,
+
+            });
 
             services.AddScoped<IApplicationTypeRepository, ApplicationTypeRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();

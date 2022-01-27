@@ -8,5 +8,8 @@ namespace MyCoreMVC.IRepository
     public interface IUnitOfWork
     {
         IApplicationTypeRepository ApplicationTypeRepository { get; }
+        ICategoryRepository CategoryRepository { get; }
+        Task<bool> Complete();
+        Task SaveChangeAsync();
     }
 }
