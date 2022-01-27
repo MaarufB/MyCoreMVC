@@ -21,8 +21,6 @@
 
   <ItemGroup>
     <Folder Include="Connected Services\" />
-    <Folder Include="DTOs\" />
-    <Folder Include="Extension\" />
     <Folder Include="Services\" />
   </ItemGroup>
 

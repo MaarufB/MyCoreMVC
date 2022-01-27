@@ -77,16 +77,15 @@ namespace MyCoreMVC.Controllers
                 if(categoryObj.Id == 0)
                 {
                     await _context.Category.AddAsync(categoryObj);
-                    //TempData["success"] = "Category created successfully";
+                    _toastNotification.AddSuccessToastMessage("Category successfully Created!");
                 }
                 else
                 {
                     _context.Category.Update(categoryObj);
+                    _toastNotification.AddSuccessToastMessage("Category successfully Updated!");
                 }
 
                 await _context.SaveChangesAsync();
-                TempData["success"] = "Category created successfully";
-                _toastNotification.AddSuccessToastMessage("Category created successfully!");
 
                 return RedirectToAction("Index");
             }
@@ -115,6 +114,7 @@ namespace MyCoreMVC.Controllers
             if (category == null) return NotFound();
 
             _context.Category.Remove(category);
+            _toastNotification.AddSuccessToastMessage("Category successfully Deleted!");
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");

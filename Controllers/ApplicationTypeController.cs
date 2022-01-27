@@ -7,16 +7,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MyCoreMVC.IRepository;
+using NToastNotify;
 
 namespace MyCoreMVC.Controllers
 {
     public class ApplicationTypeController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-
-        public ApplicationTypeController(IUnitOfWork unitOfWork)
+        private readonly IToastNotification _toastNotification;
+        public ApplicationTypeController(IUnitOfWork unitOfWork, IToastNotification toastNotification)
         {
             _unitOfWork = unitOfWork;
+            _toastNotification = toastNotification;
         }
 
         public async Task<ActionResult<IEnumerable<ApplicationType>>> Index()
@@ -49,13 +51,13 @@ namespace MyCoreMVC.Controllers
                 if(obj.Id == 0)
                 {
                     await _unitOfWork.ApplicationTypeRepository.AddAsync(obj);
+                    _toastNotification.AddSuccessToastMessage("ApplicationType successfully created!");
                 }
                 else
                 {
-
                     await _unitOfWork.ApplicationTypeRepository.Update(obj);
+                    _toastNotification.AddSuccessToastMessage("ApplicationType successfully updated!");
                 }
-
 
                 await _unitOfWork.SaveChangeAsync();
                 
@@ -103,7 +105,7 @@ namespace MyCoreMVC.Controllers
                 return NotFound();
 
             await _unitOfWork.ApplicationTypeRepository.DeleteAsync(app_type_obj);
-
+            _toastNotification.AddSuccessToastMessage("ApplicationType successfully created!");
             await _unitOfWork.SaveChangeAsync();
 
             return RedirectToAction("Index");

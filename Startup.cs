@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyCoreMVC.Data;
+using MyCoreMVC.Extension;
 using MyCoreMVC.IRepository;
 using MyCoreMVC.Repository;
 using NToastNotify;
@@ -29,28 +30,9 @@ namespace MyCoreMVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-            {
-                options.UseSqlServer(_config.GetConnectionString("DefaultConnection"));
-             });
-            services.AddMvc().AddNToastNotifyToastr(new ToastrOptions() 
-            {
-                ProgressBar = false,
-                PositionClass = ToastPositions.TopRight,
-                CloseButton = true,
 
-            });
-
-            services.AddScoped<IApplicationTypeRepository, ApplicationTypeRepository>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-
+            services.AddApplicationServices(_config);
             services.AddControllers();
-                  
-            services.AddControllersWithViews();
-            //This is for testing
-            services.AddRazorPages();
-
-         
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
