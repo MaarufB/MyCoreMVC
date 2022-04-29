@@ -24,6 +24,7 @@ let tableBody = document.getElementById('todo-table-body')
 let addItemName = document.getElementById('todo-task-name');
 const uri = 'api/todolistapi';
 let todos = []
+//var tr = document.createElement("tr");
 
 getItems();
 
@@ -36,10 +37,32 @@ async function getItems()
     return data;
 }
 
+
+asyn function loadTodoList() {
+    let data = getItems();
+
+    data.forEach(item => {
+        var tr = document.createElement("tr");
+        tr.innerHTML = `<td width="50%" id="table-task-name">${item.taskName}</td>
+                        <td class="text-center">
+                            <div class="w-75 btn-group" role="group">
+                                <a id="todo-edit" class="btn btn-primary mx-2">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a class="btn btn-danger mx-2">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                        </div>
+                    </td>`
+
+        tableBody.appendChild(tr);
+    });
+}
+
 async function createTableRow(data){
 
     data.forEach(item =>{
-        var tr = document.createElement("tr");
+/*        var tr = document.createElement("tr");*/
         tr.innerHTML = `<td width="50%" id="table-task-name">${item.taskName}</td>
                         <td class="text-center">
                             <div class="w-75 btn-group" role="group">
@@ -80,3 +103,5 @@ async function addItems()
 }
 
 
+// TODO
+// 1. Change the approach everytime you add a data don't reload the DOM. Create html element and add it to the table

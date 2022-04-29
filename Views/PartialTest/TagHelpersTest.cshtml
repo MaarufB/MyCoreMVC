@@ -31,7 +31,8 @@
 
         @* This partial view here is asynchronous type. *@
         <div class="container border border-primary">
-            @await Html.PartialAsync("_login", ViewData)
+            @*@await Html.PartialAsync("_login", ViewData)*@
+            <partial name="_login" />
         </div>
     </div>
 

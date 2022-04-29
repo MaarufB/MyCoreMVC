@@ -28,6 +28,7 @@ namespace MyCoreMVC.Extension
 
             });
 
+            services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IApplicationTypeRepository, ApplicationTypeRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 

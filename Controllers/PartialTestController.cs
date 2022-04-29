@@ -38,6 +38,7 @@ namespace MyCoreMVC.Controllers
             };
 
             return View();
+
         }
 
     //   public IActionResult TestPartial()
